@@ -23,11 +23,16 @@ public class PlaygroundService {
         final TimeInfo info = new TimeInfo();
 
         info.setTotalFireCount(5);
+        info.setRemainingFireCount(info.getTotalFireCount());
         info.setRepeatIntervalMs(2000);
         info.setInitialOffsetMs(1000);
         info.setCallbackData("My callback data");
 
         scheduler.schedule(HelloWorldJobs.class, info);
+    }
+
+    public Boolean deleteTimer(String timerId) {
+        return scheduler.deleteTimer(timerId);
     }
 
     public List<TimeInfo> getAllRunningTimer() {
